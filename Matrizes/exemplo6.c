@@ -10,12 +10,13 @@ int main ()
     int alvo = 9;
     bool encontrado = false;
     
+    // Cria a tabela e atribui os valores de 1 a 9
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-            tabela[i][j] = valores;
-            valores++;
+            tabela[i][j] = valores; // Atribuindo os valores de 1 a 9
+            valores++; 
             printf("[%d]", tabela[i][j]);
         }
         printf("\n");
@@ -33,7 +34,7 @@ int main ()
                 break; // Sai do loop interno
             }
         }
-        if (encontrado) break; // Sai do loop externo, apenas se encontrado for verdade
+        if (encontrado) break; // Sai do loop externo, apenas se a variável "encontrado" for verdade
     }
 
     if (!encontrado) // Poderia ser escrito: (encontrado == false)
