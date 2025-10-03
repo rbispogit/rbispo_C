@@ -4,15 +4,15 @@
 int main ()
 {
     int tabela[3][3];
-    int soma = 1;
+    int elemento = 1;
 
     // Cria a estrutura da tabela adicionando valores de 1 a 9
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-            tabela[i][j] = soma; // Recebe a variável soma
-            soma++; // Soma + 1 a variável soma
+            tabela[i][j] = elemento; // Inclui o elemento na coordenada da matriz 
+            elemento++; // Aumenta o valor do elemento até prrencher todas as coordenadas
 
             printf("[%d]", tabela[i][j]);
         }
@@ -26,7 +26,7 @@ int main ()
     {
         for (int j = 0; j < 3; j++)
         {
-            if (tabela[i][j] > 5) // Condicional que altera os valores
+            if (tabela[i][j] > 5) // Se o valor do elemento for maior que 5, então mude para negativo
             {
                 tabela[i][j] = - tabela[i][j]; // Muda para negativo
                 printf("[%d]", tabela[i][j]);
