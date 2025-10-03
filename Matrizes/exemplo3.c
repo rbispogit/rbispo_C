@@ -4,7 +4,7 @@
 int main ()
 {
     int tabela[3][3];
-    int elemento = 1;
+    int elemento = 1; // Elemento da matriz
 
     // Cria a estrutura da tabela adicionando valores de 1 a 9
     for (int i = 0; i < 3; i++)
