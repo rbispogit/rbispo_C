@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Definindo uma estrutura para um Aluno
+// Definindo uma estrutura, com typedef, para um Aluno
 typedef struct {
     char nome[50];
     int idade;
