@@ -1,3 +1,5 @@
+// Como declarar ponteiros
+
 #include <stdio.h>
 
 int main()
@@ -10,7 +12,7 @@ int main()
     printf("Conteúdo de p (o endereço): %p\n", p);
     printf("Valor apontado por p: %d\n", *p);
 
-    *p = 20; // mando alterar o valor de x nesse endereço de memória
+    *p = 20; // alterei o valor original de x, usando o ponteiro
     
     printf("Novo valor de x: %d\n", x);
 
