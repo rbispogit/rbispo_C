@@ -14,4 +14,6 @@ int main()
 
     a = &b; // ERRO - perdeu a referencia do espaço alocado
     free (a); // ERRO - tentou liberar memoria estatica
+
+    return 0;
 }
