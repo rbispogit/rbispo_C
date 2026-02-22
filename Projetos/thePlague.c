@@ -12,9 +12,9 @@ struct Profile
 
 int main()
 {
-    struct Profile personagem1 = {"Ragvar", 29, 5, 10}; //human bruto
-    struct Profile personagem2 = {"Marie", 3, 28, 15}; //human mage
-    struct Profile personagem3 = {"Aleron", 14, 15, 25}; //vampiro gunblade
+    struct Profile personagem1 = {"Damien Lesaint", 29, 5, 10}; //human bruto, cidade natal Paris, recebe a dadiva de dragão
+    struct Profile personagem2 = {"Lucie Lesaint", 3, 28, 15}; //human mage, cidade natal Paris, recebe a dadiva de magia
+    struct Profile personagem3 = {"Aleron Bloodraine", 14, 15, 25}; //vampiro gunblade, cidade natal Valoria
     int opcao = 0;
 
     printf("********************\n");
