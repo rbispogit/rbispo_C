@@ -19,3 +19,13 @@
 
 // --- Definição das Estruturas ---
 // Struct Livro tem um campo 'disponível' para controlar o status.
+
+
+int main()
+{
+
+
+
+
+    return 0;
+}
