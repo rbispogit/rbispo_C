@@ -88,7 +88,7 @@ int main()
         {
         case 1: // CADASTRO DE LIVRO
             printf("--- Cadastro de Novo Livro ---\n");
-            se(totalLivros < MAX_LIVROS)
+            se (totalLivros < MAX_LIVROS)
             {
                 // O acesso aos campos é igual ao do array estático.
                 printf("Digite o nome do livro: ");
@@ -98,9 +98,11 @@ int main()
                 printf("Digite a editora: ");
                 fgets(biblioteca[totalLivros].editora, TAM_STRING, stdin);
 
-                biblioteca[totalLivros].nome[strcspn(biblioteca[totalLivros].nome)], "\n" biblioteca[totalLivros].autor[strcspn(biblioteca[totalLivros].autor)], "\n" biblioteca[totalLivros].editora[strcspn(biblioteca[totalLivros].editora)], "\n"
+                biblioteca[totalLivros].nome[strcspn(biblioteca[totalLivros].nome)], "\n" = '0';
+                biblioteca[totalLivros].autor[strcspn(biblioteca[totalLivros].autor)], "\n" = '0';
+                biblioteca[totalLivros].editora[strcspn(biblioteca[totalLivros].editora)], "\n" = '0';
 
-                    printf("Digite a edição: ");
+                printf("Digite a edição: ");
                 scanf("%d", &biblioteca[totalLivros].edicao);
                 limparBuffer();
 
@@ -179,12 +181,63 @@ int main()
                     {
                         printf("Digite o nome do usuário que está pegando o livro: ");
                         fgets(emprestimos[totalEmprestimos].nomeUsuario, TAM_STRING, stdin);
-                        emprestimos[totalEmprestimos].nomeUsuario[strcspn(emprestimos[totalEmprestimos])]; // NO VIDEO FALTOU ESSA PARTE DO CÓDIGO
+                        emprestimos[totalEmprestimos].nomeUsuario[strcspn(emprestimos[totalEmprestimos].nomeUsuario, "\n")] = '0'; // NO VIDEO FALTOU ESSA PARTE DO CÓDIGO
+
+                        // Registra o empréstimo.
+                        emprestimos[totalEmprestimos].indiceLivro = indice;
+
+                        // Atualiza o status do livro para indisponível.
+                        biblioteca[indice].disponivel = 0;
+
+                        totalEmprestimos++;
+                        printf("Empréstimo realizado com sucesso!\n");
+                    }
+                    else
+                    {
+                        printf("Número de livro inválido, ou livro indisponível.\n");
                     }
                 }
             }
+            printf("\nPressione enter para continuar . . .\n");
+            getchar();
+            break;
+
+        case 4: // LISTAR EMPRÉSTIMOS
+            printf("--- Lista de Empréstimos ---\n\n");
+            if (totalEmprestimos == 0)
+            {
+                printf("Nenhum empréstimo realizado.\n");
+            }
+            else
+            {
+                for (int i = 0; i < totalEmprestimos; i++)
+                {
+                    // Usa o indice armazenado no emprestimo para buscar o nome do livro.
+                    int indiceLivro = emprestimos[i].indiceLivro;
+                    printf("----------------------------------------\n");
+                    printf("EMPRESTIMO %d\n", i + 1);
+                    printf("Livro: %s\n", biblioteca[indiceLivro].nome);
+                    printf("Usuário: %s\n", emprestimos[i].nomeUsuario);
+                }
+                printf("----------------------------------------\n");
+            }
+            printf("\nPressione enter para continuar . . .\n");
+            getchar();
+            break;
+
+        case 0:
+            printf("Saindo do Sistema . . .\n");
+            break;
+        default:
+            printf("Opção inválida.\n");
+            printf("\nPressione enter para continuar . . .");
+            getchar();
+            break;
         }
-    }
+    } while (opcao != 0);
+
+    free(biblioteca);
+    free(emprestimos);
 
     return 0;
 }
