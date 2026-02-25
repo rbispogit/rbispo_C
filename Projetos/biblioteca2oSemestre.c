@@ -86,13 +86,102 @@ int main()
 
         switch (opcao)
         {
-            case 1: // CADASTRO DE LIVRO
+        case 1: // CADASTRO DE LIVRO
             printf("--- Cadastro de Novo Livro ---\n");
-            se (totalLivros < MAX_LIVROS)
+            se(totalLivros < MAX_LIVROS)
             {
                 // O acesso aos campos é igual ao do array estático.
                 printf("Digite o nome do livro: ");
                 fgets(biblioteca[totalLivros].nome, TAM_STRING, stdin);
+                printf("Digite o autor: ");
+                fgets(biblioteca[totalLivros].autor, TAM_STRING, stdin);
+                printf("Digite a editora: ");
+                fgets(biblioteca[totalLivros].editora, TAM_STRING, stdin);
+
+                biblioteca[totalLivros].nome[strcspn(biblioteca[totalLivros].nome)], "\n" biblioteca[totalLivros].autor[strcspn(biblioteca[totalLivros].autor)], "\n" biblioteca[totalLivros].editora[strcspn(biblioteca[totalLivros].editora)], "\n"
+
+                    printf("Digite a edição: ");
+                scanf("%d", &biblioteca[totalLivros].edicao);
+                limparBuffer();
+
+                // Ao cadastrar, o livro se torna automaticamento disponível.
+                biblioteca[totalLivros].disponivel = 1;
+
+                totalLivros++;
+                printf("Livro cadastrado com sucesso!\n");
+            }
+            else
+            {
+                printf("Biblioteca cheia.\n");
+            }
+            printf("Pressione enter para continuar . . .\n");
+            getchar();
+            break;
+
+        case 2: // LISTAGEM DE LIVROS
+            printf("--- Lista de Livros Cadastrados ---\n\n");
+            if (totalLivros == 0)
+            {
+                printf("Nenhum livro cadastrado ainda.\n");
+            }
+            else
+            {
+                for (int i = 0; i < totalLivros; i++)
+                {
+                    printf("----------------------------------------\n");
+                    printf("LIVRO %d\n", i + 1);
+                    printf("-Nome: %s", biblioteca[i].nome);
+                    printf("-Autor: %s", biblioteca[i].autor);
+                    // Mostra o status de disponibilidade
+                    printf("-Status: %s", biblioteca[i].disponivel ? "Disponivel" : "Emprestado");
+                }
+                printf("----------------------------------------\n");
+            }
+            printf("Pressione enter para continuar . . .\n");
+            getchar();
+            break;
+
+        case 3: // Realizar Emprestimo
+            printf("--- Lista de Livros Cadastrados ---\n\n");
+
+            if (totalEmprestimos >= MAX_EMPRESTIMOS)
+            {
+                printf("Limite de empréstimos atingido.\n");
+            }
+            else
+            {
+                printf("Livros disponíveis:\n");
+                int disponiveis = 0;
+                for (int i = 0; i < totalLivros; i++)
+                {
+                    if (biblioteca[i].disponivel)
+                    {
+                        printf("%d - %s\n", i + 1, biblioteca[i].nome);
+                        disponiveis++;
+                    }
+                }
+
+                if (disponiveis == 0)
+                {
+                    printf("Nenhum livro disponível para empréstimo.\n");
+                }
+                else
+                {
+                    printf("Digite o número do livros que deseja emprestar: ");
+                    int numLivro;
+                    scanf("%d", &numLivro);
+                    limparBuffer();
+
+                    int indice = numLivro - 1; // Converte para o índice do array (0 a N - 1)
+
+                    // Validação da escolha do usuário.
+                    if (indice >= 0 && indice < totalLivros && biblioteca[indice].disponivel)
+                    {
+                        printf("Digite o nome do usuário que está pegando o livro: ");
+                        fgets(emprestimos[totalEmprestimos].nomeUsuario, TAM_STRING, stdin);
+                        emprestimos[totalEmprestimos].nomeUsuario[strcspn(emprestimos[totalEmprestimos])]; // NO VIDEO FALTOU ESSA PARTE DO CÓDIGO
+                    }
+                }
             }
         }
     }
