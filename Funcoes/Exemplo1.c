@@ -1,3 +1,5 @@
+// Exemplo de como usar uma função com passagem de parâmetros por valor
+
 #include <stdio.h>
 
 void dobrador(int x)
