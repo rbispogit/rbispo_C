@@ -1,4 +1,5 @@
 // Exemplo de como usar uma função com passagem de parâmetros por valor
+// Ela não modifica o valor original
 
 #include <stdio.h>
 
