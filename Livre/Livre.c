@@ -2,30 +2,26 @@
 
 #include <stdio.h>
 
-struct Profile
+/*struct Profile
 {
     char nome[20];
     int força;
     int inteligencia;
     int agilidade;
-};
+};*/
 
 int main()
 {
-    struct Profile personagem1 = {"Ragvar", 29, 5, 10}; //human bruto
-    struct Profile personagem2 = {"Marie", 3, 28, 15}; //human mage
-    struct Profile personagem3 = {"Aleron", 14, 15, 25}; //vampiro gunblade
-    int opcao = 0;
+    int verdadeiro = 0;
 
-    printf("********************\n");
-    printf("***  THE PLAGUE  ***\n");
-    printf("********************\n\n");
-    printf("   - Start Game -   \n\n");
-
-    /*switch (opcao)
+    if (verdadeiro)
     {
-
-    }*/
+        printf("VERDADEIRO!\n\n");
+    }
+    else
+    {
+        printf("FALSO!\n\n");
+    }
 
     return 0;
 }
