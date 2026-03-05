@@ -5,6 +5,11 @@
 int main()
 
 {
+    // Lista estática
+    int lista[5] = {10, 20, 30, 40, 50};
+
+
+    // Lista dinâmica
     // Arranja um espaço na memória para guardar 3 números inteiros
     int* numeros = (int*) malloc(3 * sizeof(int));
 
