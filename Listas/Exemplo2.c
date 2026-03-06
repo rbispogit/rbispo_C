@@ -15,7 +15,14 @@ int main()
     struct No* segundo = (struct No*) malloc(sizeof(struct No));
     struct No* terceiro = (struct No*) malloc(sizeof(struct No));
 
-    
+    primeiro->dado = 10;
+    primeiro->proximo = segundo;
+
+    segundo->dado = 20;
+    segundo->proximo = terceiro;
+
+    terceiro->dado= 30;
+    terceiro->proximo = NULL;
 
     return 0;
 }
