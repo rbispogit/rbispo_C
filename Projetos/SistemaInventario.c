@@ -1,5 +1,5 @@
-/*Desenvolvimento de um sistema de inventário em C, comparando vetor e lista encadeada, 
-  com inserção, remoção, listagem e busca linear, explorando os limites, 
+/*Desenvolvimento de um sistema de inventário em C, comparando vetor e lista encadeada,
+  com inserção, remoção, listagem e busca linear, explorando os limites,
   a flexibilidade e o desempenho de cada estrutura.*/
 
 #include <stdio.h>
@@ -13,10 +13,10 @@
 #define TAM_MAX 10 // Define o número máximo de itens na lista estática.
 
 // Estrutura que representa a lista estática
-typedef struct 
+typedef struct
 {
-    char dados[TAM_MAX][MAX_STR_LEN]; // Matriz: 10 linhas, 50 colunas.
-    int quantidade; // Este é o nosso contador de controle. Ele informa quantos itens estão realmente armazenados na lista 
+  char dados[TAM_MAX][MAX_STR_LEN]; // Matriz: 10 linhas, 50 colunas.
+  int quantidade;                   // Este é o nosso contador de controle. Ele informa quantos itens estão realmente armazenados na lista
 } ListaEstatica;
 
 // Funções da Lista Estática
@@ -26,8 +26,8 @@ typedef struct
 // Recebemos um ponteiro (*lista) para modificar a variável original passada para a função.
 void inicializarListaEstatica(ListaEstatica *lista);
 
-void inserirListaEstatica(ListaEstatica *lista, const char* texto);
-void removerListaEstatica(ListaEstatica *lista, const char* texto);
+void inserirListaEstatica(ListaEstatica *lista, const char *texto);
+void removerListaEstatica(ListaEstatica *lista, const char *texto);
 void listarListaEstatica(const ListaEstatica *lista);
 
 // ----------------------------------------
@@ -43,11 +43,37 @@ void listarListaEstatica(const ListaEstatica *lista);
 // O último nó da lista terá este ponteiro apontando para NULL.
 typedef struct No
 {
-  char* dado;
+  char *dado;
   struct No *proximo; // Ponteiro para a string (alocada dinamicamente)
 } No;
 
+// Isso é um atalho. Em vez de escrever No* sempre que quisermos nos refereir a nossa lista, podemos simplesmente usar...((cortou))
+// A "lista" em si é apenas um ponteiro para o primeiro nó (a "cabeça da lista").
+typedef No *ListaEncadeada;
 
+// Funções da Lista Encadeada
 
+// Uma lista encadeada vazia é representada por um ponteiro de cabeça que aponta para NULL.
+// Essa função simplesmente atribui NULL ao ponteiro que representa nossa lista.
+void inicializarListaEncadeada(ListaEncadeada *lista);
 
+void inserirListaEncadeada(ListaEncadeada *lista, const char *texto);
+void removerListaEncadeada(ListaEncadeada *lista, const char *texto);
+void listarListaEncadeada(const ListaEncadeada *lista);
+void liberarListaEncadeada(ListaEncadeada *lista); // Função nova para limpar a memória
 
+// -----------------------------------------------
+// FUNÇÃO PRINCIPAL (main) E MENUS
+// -----------------------------------------------
+
+void menuListaEstatica();
+void menuListaEncadeada();
+
+int main()
+{
+  int opcao;
+  do 
+  {
+    printf("\n --- MANIPULAÇÃO DE LISTAS (TEXTO) ---\n")
+  }
+}
