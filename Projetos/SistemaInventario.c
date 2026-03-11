@@ -72,8 +72,32 @@ void menuListaEncadeada();
 int main()
 {
   int opcao;
-  do 
+  do
   {
-    printf("\n --- MANIPULAÇÃO DE LISTAS (TEXTO) ---\n")
-  }
+    printf("\n --- MANIPULAÇÃO DE LISTAS (TEXTO) ---\n");
+    printf("1. Lista Estatica\n");
+    printf("2. Lista Encadeada\n");
+    printf("0. Sair do Programa\n");
+    printf("Escolha uma opção: \n");
+    scanf("%d", &opcao);
+
+    switch (opcao)
+    {
+      case 1:
+        menuListaEstatica();
+        break;
+      case 2:
+        menuListaEncadeada();
+        break;
+      case 0:
+        printf("Saindo...\n");
+        break;
+
+      default:
+        break;
+    }
+  } while (opcao != 0);
+
+
+  return 0;
 }
