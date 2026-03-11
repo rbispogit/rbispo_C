@@ -101,3 +101,40 @@ int main()
 
   return 0;
 }
+
+// -----------------------------------------------
+// IMPLEMENTAÇÃO DAS FUNÇÕES - LISTA ESTÁTICA
+// -----------------------------------------------
+
+void inicializarListaEstatica(ListaEstatica *lista)
+{
+  lista->quantidade = 0;
+}
+
+
+void inserirListaEstatica(ListaEstatica *lista, const char *texto)
+{
+  // Primeiro ela verifica se lista->quantidade já atingiu TAM_MAX.
+  // Se sim, a lista está cheia e a função retorna.
+  if (lista->quantidade == TAM_MAX)
+  {
+    printf("Erro! Lista cheia. Não é possível inserir.\n");
+    return;
+  }
+  // A inserção ocorre na primeira "linha" livre da matriz.
+  // Para strings, não podemos fazer "lista->dados[i] = texto;" pq em C não se pode atribuir vetores/strings com texto
+  // Precisamos copiar o conteúdo da string para a posição correta na nossa matriz dados.
+  strcpy(lista->dados[lista->quantidade], texto);
+  // Após a cópia, lista->quantidade é incrementado, pois agora temos mais de um item na lista.
+  lista->quantidade++;
+  printf("Texto \"%s\" inserido com sucesso\n"); 
+}
+
+void removerListaEstatica(ListaEstatica *lista, const char* texto)
+{
+  int i, pos = -1;
+  // Para comparar strings, usamos strcmp(). Retorna 0 se forem iguais.
+  // A função percorre os itens em uso na lista (de 0 até quantidade).
+  // Para comparar strings, usamos strcmp(string1, string2).
+  // Essa função retorna 0 se as strings forem idênticas. Se encontrar, guarda a posição (pos) e para o loop.
+}
