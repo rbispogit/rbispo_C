@@ -175,4 +175,60 @@ void listarListaEstatica(const ListaEstatica *lista)
     printf("A lista estática está vazia\n");
     return;
   }
+  printf("Itens da Lista Estatica: [ ");
+  for (int i = 0; i < lista->quantidade; i++)
+  {
+    printf("\"%s\" ", lista->dados[i]); // Usar %s para imprimir strings
+  }
+  printf("]\n");
+}
+
+// -----------------------------------------------
+// IMPLEMENTAÇÃO DAS FUNÇÕES - LISTA ENCADEADA
+// -----------------------------------------------
+
+// Uma lista encadeada vazia é representada por um ponteiro de cabeça que aponta para NULL.
+// Esta função simplesmente atribui NULL ao ponteiro que representa nossa lista.
+void inicializarListaEncadeada(ListaEncadeada *lista)
+{
+  *lista = NULL;
+}
+
+
+void insesirListaEncadeada(ListaEncadeada *lista, const char *texto)
+{
+  // 1. Alocar memória para o novo Nó.
+  // Alocação do nó: malloc(sizeof(No)) pede ao sistema operacional memória suficiente para um nó.
+  // novoNo agora aponta para essa memória.
+  No* novoNo = (No*) malloc(sizeof(No));
+  
+  if (novoNo == NULL)
+  {
+    printf("Erro! Falha na alocação de memória para o nó.\n");
+    return;
+  }
+
+  // 2. Alocar memória para a STRING DENTRO DO NÓ.
+  // strlen(texto) + 1 para incluir o caracter nulo '\0' no final.
+  // Alocação da string: malloc(strlen(texto) + 1) aloca memória para o texto.
+  // strlen conta os caracteres, e o +1 é vital para o caracter nulo (\0) que finaliza toda string em C.
+  // novoNo->dado agora aponta para este espaço.
+  novoNo->dado = (char*) malloc(strlen(texto) + 1);
+
+  if (novoNo->dado == NULL)
+  {
+    printf("Erro! Falha na alocação de memória para o texto.\n");
+    free(novoNo); // Libera o nó que já foi alocado.
+    return;
+  }
+
+  // 3. Copiar o texto para a memória recém alocada.
+  // Cópia do texto: strcpy copia o texto de entrada para a área de memória recém alocada apontada por novoNo->dado.
+  strcpy(novoNo->dado, texto);
+
+  // 4. Ligar o novo nó a lista.
+  // O ponteiro proximo do novo nó passa a apontar para o que era o antigo primeiro nó da lista.
+  novoNo->proximo = *lista;
+  // A cabeça da lista (*lista) é atualizada para apontar para o novoNo. O novoNo é agora o primeiro item.
+
 }
