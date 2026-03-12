@@ -127,7 +127,7 @@ void inserirListaEstatica(ListaEstatica *lista, const char *texto)
   strcpy(lista->dados[lista->quantidade], texto);
   // Após a cópia, lista->quantidade é incrementado, pois agora temos mais de um item na lista.
   lista->quantidade++;
-  printf("Texto \"%s\" inserido com sucesso\n"); 
+  printf("Texto \"%s\" inserido com sucesso\n", texto); 
 }
 
 void removerListaEstatica(ListaEstatica *lista, const char* texto)
@@ -137,4 +137,42 @@ void removerListaEstatica(ListaEstatica *lista, const char* texto)
   // A função percorre os itens em uso na lista (de 0 até quantidade).
   // Para comparar strings, usamos strcmp(string1, string2).
   // Essa função retorna 0 se as strings forem idênticas. Se encontrar, guarda a posição (pos) e para o loop.
+  for (i = 0; i < lista->quantidade; i++)
+  {
+    if (strcmp(lista->dados[i], texto) == 0)
+    {
+      pos = i;
+      break;
+    }
+  }
+
+  // Tratamento de erro: Se o loop terminar e pos continuar -1, o item não foi encontrado.
+  if (pos == -1)
+  {
+    printf("Erro! Texto \"%s\" não encontrado na lista\n", texto);
+    return;
+  }
+
+  // Fechar a lacuna: Se removemos um item do meio da lista, criamos um "buraco".
+  // Para preenche-lo, movemos todos itens subsequentes uma posição para a esquerda.
+  // O loop for começa na posição do item removido e copia cada item i+1 para a posição i.
+  // Deslocar os elementos posteriores para a esquerda usando strcpy.
+  for (i = pos; i < lista->quantidade -1; i++)
+  {
+    strcpy(lista->dados[i], lista->dados[i + 1]);
+  }
+
+  // Atualização do contador: Finalmente, quantidade é decrementado para refletir que a lista tem um item a menos.
+  lista->quantidade--;
+  printf("Texto \"%s\" removido com sucesso\n", texto);
+}
+
+
+void listarListaEstatica(const ListaEstatica *lista)
+{
+  if (lista->quantidade == 0)
+  {
+    printf("A lista estática está vazia\n");
+    return;
+  }
 }
