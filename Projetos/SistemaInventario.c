@@ -230,5 +230,30 @@ void insesirListaEncadeada(ListaEncadeada *lista, const char *texto)
   // O ponteiro proximo do novo nó passa a apontar para o que era o antigo primeiro nó da lista.
   novoNo->proximo = *lista;
   // A cabeça da lista (*lista) é atualizada para apontar para o novoNo. O novoNo é agora o primeiro item.
+  *lista = novoNo;
 
+  printf("Texto \"%s\" inserido com sucesso\n", texto);
+
+}
+
+void removerListaEncadeada(ListaEncadeada *lista, const char *texto)
+{
+  // Usamos dois ponteiros, atual e anterior, para percorrer a lista. atual avança, e anterior segue.
+  // Paramos quando atual aponta para o nó a ser removido.
+  No *atual = *lista;
+  No *anterior = NULL;
+
+  while (atual != NULL && strcmp(atual->dado, texto) != 0)
+  {
+    anterior = atual;
+    atual = atual->proximo;
+  }
+
+  if (atual == NULL)
+  {
+    printf("Erro! Texto \"%s\" não encontrado na lista\n", texto);
+    return;
+  }
+
+  
 }
