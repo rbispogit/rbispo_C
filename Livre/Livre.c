@@ -1,27 +1,13 @@
-//Projeto de um game 2D
 
 #include <stdio.h>
 
-/*struct Profile
-{
-    char nome[20];
-    int força;
-    int inteligencia;
-    int agilidade;
-};*/
+
 
 int main()
 {
-    int verdadeiro = 0;
+    int vetor[5] = {10, 20, 30, 40, 50};
 
-    if (verdadeiro)
-    {
-        printf("VERDADEIRO!\n\n");
-    }
-    else
-    {
-        printf("FALSO!\n\n");
-    }
+    printf("%d\n\n\n", vetor[0]);
 
     return 0;
 }
