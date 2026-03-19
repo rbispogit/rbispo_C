@@ -61,6 +61,10 @@ void inserir(Fila *f, Pessoa p)
     f->total++;
 }
 
+
+// Dequeue remove o elemento da frente da fila.
+// Dequeue insere no final e atualiza os controles da fila, e o uso do módulo mantém a circularidade.  
+// A remoção retorna o primeiro elemento e ajusta a posição de início da fila.
 void remover(Fila *f, Pessoa *p)
 {
     if (filaVazia(f))
@@ -72,4 +76,38 @@ void remover(Fila *f, Pessoa *p)
     *p = f->itens[f->inicio];             
     f->inicio = (f->inicio + 1) % MAX;     
     f->total--;  
+}
+
+// Exibe todos os elementos na ordem em que foram inseridos.
+// Essa função percorre a fila desde o início até o total visto atualmente, respeitando a ordem dos dados.
+void mostrarFila(Fila *f) {
+    printf("Fila: ");
+    for (int i = 0, idx = f->inicio; i < f->total; i++, idx = (idx + 1) % MAX) {
+        printf("[%s, %d] ", f->itens[idx].nome, f->itens[idx].idade);
+    }
+    printf("\n");
+}
+
+// A fila pode ser usada no main após ser inicializada, inserindo pessoas e mostrando o conteúdo. 
+int main() {
+    Fila f;
+    inicializarFila(&f);  // Inicializa a fila
+ 
+    // Insere algumas pessoas na fila
+    Pessoa p1 = {"João", 25};
+    Pessoa p2 = {"Maria", 30};
+    inserir(&f, p1);
+    inserir(&f, p2);
+ 
+    mostrarFila(&f);  // Mostra a fila antes da remoção
+ 
+    // Remove uma pessoa da fila
+    Pessoa removida;
+    remover(&f, &removida);  // Aqui usamos a função de remoção
+ 
+    printf("Pessoa removida: %s, %d\n", removida.nome, removida.idade);
+ 
+    mostrarFila(&f);  // Mostra a fila após a remoção
+ 
+    return 0;
 }
