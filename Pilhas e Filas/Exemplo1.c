@@ -26,7 +26,7 @@ typedef struct
 
 // Antes de usar a fila, seus índices e contador precisam ser configurados.
 // A inicialização define o ponto de partida da fila, visando ao seu funcionamento correto desde o início.
-void InicializarFila(Fila *f)
+void inicializarFila(Fila *f)
 {
     f->inicio = 0;
     f->fim = 0;
@@ -35,14 +35,14 @@ void InicializarFila(Fila *f)
 
 // É importante para sabermos se a fila atingiu a capacidade máxima.
 // Fila cheia impede novas inserções. Logo, essa verificação evita sobreposição de dados. 
-void filaCheia(Fila *f)
+int filaCheia(Fila *f)
 {
     return f->total == MAX;
 }
 
 // Fazer tal verificação também confirma se há elementos disponíveis para remoção.
 // Fila vazia, por sua vez, impede remoções, o que é importante para evitar acesso a posições inválidas.
-void filaVazia(Fila *f)
+int filaVazia(Fila *f)
 {
     return f->total == 0;
 }
@@ -96,8 +96,10 @@ int main() {
     // Insere algumas pessoas na fila
     Pessoa p1 = {"João", 25};
     Pessoa p2 = {"Maria", 30};
+    Pessoa p3 = {"Bob", 15};
     inserir(&f, p1);
     inserir(&f, p2);
+    inserir(&f, p3);
  
     mostrarFila(&f);  // Mostra a fila antes da remoção
  
